@@ -622,8 +622,8 @@ export class VerdiktStack extends cdk.Stack {
     const approvalLambda = new lambda.Function(this, "ApprovalHandler", {
       runtime: lambda.Runtime.NODEJS_20_X,
       handler: "index.handler",
-      code: lambda.Code.fromInline(
-        `exports.handler = async (event) => ({ statusCode: 200, body: JSON.stringify({ message: "stub" }) });`
+      code: lambda.Code.fromAsset(
+        path.join(__dirname, "../../packages/approval/dist")
       ),
       tracing: lambda.Tracing.ACTIVE,
       environment: {
