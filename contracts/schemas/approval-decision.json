@@ -1,0 +1,62 @@
+{
+  "$ref": "#/definitions/approval-decision",
+  "definitions": {
+    "approval-decision": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "type": "number",
+          "const": 1
+        },
+        "approvalId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recommendationId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recommendationVersion": {
+          "type": "integer",
+          "exclusiveMinimum": 0
+        },
+        "claimId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "approve",
+            "reject"
+          ]
+        },
+        "actor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "approvalId",
+        "recommendationId",
+        "recommendationVersion",
+        "claimId",
+        "runId",
+        "decision",
+        "actor",
+        "timestamp"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

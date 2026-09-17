@@ -1,0 +1,513 @@
+{
+  "$ref": "#/definitions/run-snapshot",
+  "definitions": {
+    "run-snapshot": {
+      "type": "object",
+      "properties": {
+        "snapshotId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claimId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "snapshotVersion": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "nodePointer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attemptCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "budgetRemainingUsd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "extractionResult": {
+          "type": "object",
+          "properties": {
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "claimId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "runId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "attemptId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "inputVersion": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "facts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "value": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "evidence": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "documentId": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "section": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "excerpt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "documentId",
+                        "section"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "field",
+                  "value",
+                  "confidence",
+                  "evidence"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            },
+            "missingDocuments": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "schemaVersion",
+            "claimId",
+            "runId",
+            "attemptId",
+            "inputVersion",
+            "facts"
+          ],
+          "additionalProperties": false
+        },
+        "investigationResult": {
+          "type": "object",
+          "properties": {
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "claimId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "runId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "attemptId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "inputVersion": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "verdict": {
+              "type": "string",
+              "enum": [
+                "proceed",
+                "reject",
+                "flag_for_review"
+              ]
+            },
+            "policyReferences": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "policyId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "coverageType": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "limitAmount": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "active",
+                      "lapsed",
+                      "cancelled"
+                    ]
+                  },
+                  "matchedFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "policyId",
+                  "coverageType",
+                  "limitAmount",
+                  "status",
+                  "matchedFacts"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "priorClaimReferences": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "priorClaimId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "date": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "settlementAmount": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "settled",
+                      "denied",
+                      "pending"
+                    ]
+                  },
+                  "relatedFact": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "priorClaimId",
+                  "date",
+                  "settlementAmount",
+                  "status",
+                  "relatedFact"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "notes": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "schemaVersion",
+            "claimId",
+            "runId",
+            "attemptId",
+            "inputVersion",
+            "verdict",
+            "policyReferences",
+            "priorClaimReferences"
+          ],
+          "additionalProperties": false
+        },
+        "reviewResult": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "outcome": {
+                  "type": "string",
+                  "const": "rework"
+                },
+                "schemaVersion": {
+                  "type": "number",
+                  "const": 1
+                },
+                "claimId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "runId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "attemptId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "inputVersion": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rework": {
+                  "type": "object",
+                  "properties": {
+                    "targetAgent": {
+                      "type": "string",
+                      "enum": [
+                        "extractor",
+                        "investigator"
+                      ]
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "staleInputVersion": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "targetAgent",
+                    "reason",
+                    "staleInputVersion"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "outcome",
+                "schemaVersion",
+                "claimId",
+                "runId",
+                "attemptId",
+                "inputVersion",
+                "rework"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "outcome": {
+                  "type": "string",
+                  "const": "recommendation"
+                },
+                "schemaVersion": {
+                  "type": "number",
+                  "const": 1
+                },
+                "claimId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "runId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "attemptId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "inputVersion": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "recommendation": {
+                  "type": "object",
+                  "properties": {
+                    "schemaVersion": {
+                      "type": "number",
+                      "const": 1
+                    },
+                    "recommendationId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "claimId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "runId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "version": {
+                      "type": "integer",
+                      "exclusiveMinimum": 0
+                    },
+                    "decision": {
+                      "type": "string",
+                      "enum": [
+                        "approve",
+                        "reject",
+                        "escalate"
+                      ]
+                    },
+                    "rationale": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "confidence": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "estimatedPayout": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "required": [
+                    "schemaVersion",
+                    "recommendationId",
+                    "claimId",
+                    "runId",
+                    "version",
+                    "decision",
+                    "rationale",
+                    "confidence",
+                    "createdAt"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "outcome",
+                "schemaVersion",
+                "claimId",
+                "runId",
+                "attemptId",
+                "inputVersion",
+                "recommendation"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "recommendation": {
+          "type": "object",
+          "properties": {
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "recommendationId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "claimId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "runId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "version": {
+              "type": "integer",
+              "exclusiveMinimum": 0
+            },
+            "decision": {
+              "type": "string",
+              "enum": [
+                "approve",
+                "reject",
+                "escalate"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "minLength": 1
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "estimatedPayout": {
+              "type": "number",
+              "minimum": 0
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "schemaVersion",
+            "recommendationId",
+            "claimId",
+            "runId",
+            "version",
+            "decision",
+            "rationale",
+            "confidence",
+            "createdAt"
+          ],
+          "additionalProperties": false
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "snapshotId",
+        "claimId",
+        "runId",
+        "snapshotVersion",
+        "nodePointer",
+        "attemptCount",
+        "budgetRemainingUsd",
+        "createdAt"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

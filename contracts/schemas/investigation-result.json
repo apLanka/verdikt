@@ -1,0 +1,136 @@
+{
+  "$ref": "#/definitions/investigation-result",
+  "definitions": {
+    "investigation-result": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "type": "number",
+          "const": 1
+        },
+        "claimId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attemptId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inputVersion": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "verdict": {
+          "type": "string",
+          "enum": [
+            "proceed",
+            "reject",
+            "flag_for_review"
+          ]
+        },
+        "policyReferences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "policyId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "coverageType": {
+                "type": "string",
+                "minLength": 1
+              },
+              "limitAmount": {
+                "type": "number",
+                "minimum": 0
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "active",
+                  "lapsed",
+                  "cancelled"
+                ]
+              },
+              "matchedFacts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "policyId",
+              "coverageType",
+              "limitAmount",
+              "status",
+              "matchedFacts"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "priorClaimReferences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "priorClaimId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "date": {
+                "type": "string",
+                "minLength": 1
+              },
+              "settlementAmount": {
+                "type": "number",
+                "minimum": 0
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "settled",
+                  "denied",
+                  "pending"
+                ]
+              },
+              "relatedFact": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "priorClaimId",
+              "date",
+              "settlementAmount",
+              "status",
+              "relatedFact"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "claimId",
+        "runId",
+        "attemptId",
+        "inputVersion",
+        "verdict",
+        "policyReferences",
+        "priorClaimReferences"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

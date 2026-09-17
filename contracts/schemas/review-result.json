@@ -1,0 +1,176 @@
+{
+  "$ref": "#/definitions/review-result",
+  "definitions": {
+    "review-result": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "outcome": {
+              "type": "string",
+              "const": "rework"
+            },
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "claimId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "runId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "attemptId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "inputVersion": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "rework": {
+              "type": "object",
+              "properties": {
+                "targetAgent": {
+                  "type": "string",
+                  "enum": [
+                    "extractor",
+                    "investigator"
+                  ]
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "staleInputVersion": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "targetAgent",
+                "reason",
+                "staleInputVersion"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "outcome",
+            "schemaVersion",
+            "claimId",
+            "runId",
+            "attemptId",
+            "inputVersion",
+            "rework"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "outcome": {
+              "type": "string",
+              "const": "recommendation"
+            },
+            "schemaVersion": {
+              "type": "number",
+              "const": 1
+            },
+            "claimId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "runId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "attemptId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "inputVersion": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "recommendation": {
+              "type": "object",
+              "properties": {
+                "schemaVersion": {
+                  "type": "number",
+                  "const": 1
+                },
+                "recommendationId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "claimId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "runId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "version": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0
+                },
+                "decision": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "reject",
+                    "escalate"
+                  ]
+                },
+                "rationale": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "estimatedPayout": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "required": [
+                "schemaVersion",
+                "recommendationId",
+                "claimId",
+                "runId",
+                "version",
+                "decision",
+                "rationale",
+                "confidence",
+                "createdAt"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "outcome",
+            "schemaVersion",
+            "claimId",
+            "runId",
+            "attemptId",
+            "inputVersion",
+            "recommendation"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

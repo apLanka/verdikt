@@ -1,0 +1,17 @@
+[
+  { "vehicleType": "sedan", "repairCategory": "body_panel", "estimatedMinCost": 800, "estimatedMaxCost": 4500, "source": "synthetic" },
+  { "vehicleType": "sedan", "repairCategory": "bumper", "estimatedMinCost": 500, "estimatedMaxCost": 2500, "source": "synthetic" },
+  { "vehicleType": "sedan", "repairCategory": "glass", "estimatedMinCost": 200, "estimatedMaxCost": 1200, "source": "synthetic" },
+  { "vehicleType": "sedan", "repairCategory": "mechanical", "estimatedMinCost": 1000, "estimatedMaxCost": 8000, "source": "synthetic" },
+  { "vehicleType": "sedan", "repairCategory": "electrical", "estimatedMinCost": 600, "estimatedMaxCost": 5000, "source": "synthetic" },
+  { "vehicleType": "sedan", "repairCategory": "paint", "estimatedMinCost": 300, "estimatedMaxCost": 3000, "source": "synthetic" },
+  { "vehicleType": "suv", "repairCategory": "body_panel", "estimatedMinCost": 1200, "estimatedMaxCost": 6000, "source": "synthetic" },
+  { "vehicleType": "suv", "repairCategory": "bumper", "estimatedMinCost": 700, "estimatedMaxCost": 3500, "source": "synthetic" },
+  { "vehicleType": "suv", "repairCategory": "glass", "estimatedMinCost": 250, "estimatedMaxCost": 1500, "source": "synthetic" },
+  { "vehicleType": "suv", "repairCategory": "mechanical", "estimatedMinCost": 1500, "estimatedMaxCost": 12000, "source": "synthetic" },
+  { "vehicleType": "truck", "repairCategory": "body_panel", "estimatedMinCost": 1500, "estimatedMaxCost": 7000, "source": "synthetic" },
+  { "vehicleType": "truck", "repairCategory": "bumper", "estimatedMinCost": 900, "estimatedMaxCost": 4000, "source": "synthetic" },
+  { "vehicleType": "truck", "repairCategory": "mechanical", "estimatedMinCost": 2000, "estimatedMaxCost": 15000, "source": "synthetic" },
+  { "vehicleType": "motorcycle", "repairCategory": "body_panel", "estimatedMinCost": 400, "estimatedMaxCost": 2000, "source": "synthetic" },
+  { "vehicleType": "motorcycle", "repairCategory": "mechanical", "estimatedMinCost": 800, "estimatedMaxCost": 6000, "source": "synthetic" }
+]

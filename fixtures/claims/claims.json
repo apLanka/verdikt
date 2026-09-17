@@ -1,0 +1,564 @@
+{
+  "claims": [
+    {
+      "claimId": "CLM-001",
+      "scenario": "straightforward_approval",
+      "expectedPath": "extract → investigate → review → approve",
+      "policyId": "POL-001",
+      "policyholder": "Alice Johnson",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-01 at 3:45 PM, insured vehicle (2023 Toyota Camry, VIN: 1HGBH41JXMN109186) was rear-ended at the intersection of Main St and Oak Ave. Other driver ran a red light. Police report filed #PR-2026-4521. No injuries reported."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Repair estimate for 2023 Toyota Camry: Rear bumper replacement $1,800, trunk lid repair $600, paint and finish $450. Total estimate: $2,850. Estimated completion: 5 business days."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-002",
+      "scenario": "straightforward_approval",
+      "expectedPath": "extract → investigate → review → approve",
+      "policyId": "POL-001",
+      "policyholder": "Alice Johnson",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-03 at 10:20 AM, insured vehicle struck a deer on Highway 12. Front right fender and headlight assembly damaged. No other vehicles involved. Wildlife officer report #WO-2026-88."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Front right fender replacement $2,200, headlight assembly $850, paint blending $350. Total: $3,400. Parts on order, 3-day repair."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-003",
+      "scenario": "straightforward_approval",
+      "expectedPath": "extract → investigate → review → approve",
+      "policyId": "POL-003",
+      "policyholder": "Carol Davis",
+      "vehicleType": "suv",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-05, insured 2022 Honda CR-V was hit in a parking lot. Left door and mirror damaged. Security camera footage available. No witnesses. Incident #PL-2026-331."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Left door skin replacement $3,200, side mirror assembly $450, window regulator $300, paint $600. Total: $4,550. 7 business days."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-004",
+      "scenario": "straightforward_approval",
+      "expectedPath": "extract → investigate → review → approve",
+      "policyId": "POL-005",
+      "policyholder": "Eve Martinez",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-07, insured vehicle rear-ended while stopped at traffic light. Minor whiplash for passenger (treated and released). Other driver cited. Case #TC-2026-102."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Rear bumper cover $1,200, trunk latch mechanism $280, paint $350. Total: $1,830. 3 business days."
+        },
+        {
+          "type": "photo_description",
+          "content": "Three photos showing: (1) rear bumper with dent and paint transfer, (2) trunk alignment gap, (3) close-up of paint damage."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-005",
+      "scenario": "straightforward_approval",
+      "expectedPath": "extract → investigate → review → approve",
+      "policyId": "POL-006",
+      "policyholder": "Frank Brown",
+      "vehicleType": "suv",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-08, insured 2023 Ford Explorer windshield cracked by road debris on I-95. No collision with other vehicles. Dashcam footage available. Report #RD-2026-55."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Full windshield replacement $890, calibration of ADAS sensors $350. Total: $1,240. Same-day service."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-006",
+      "scenario": "rework_then_approve",
+      "expectedPath": "extract → investigate → review → rework(extractor) → extract → investigate → review → approve",
+      "policyId": "POL-001",
+      "policyholder": "Alice Johnson",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-10, insured vehicle sideswiped on the highway. Damage to left side panels. Other driver fled the scene (hit and run). Police report #HR-2026-201. Insured provided partial license plate: ABC-12."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Left front fender $1,800, left rear door $2,400, left mirror $350, paint and blending $1,200. Total: $5,750. 10 business days."
+        },
+        {
+          "type": "photo_description",
+          "content": "Four photos: (1) full left side view showing scrape marks, (2) front fender damage close-up, (3) rear door dent, (4) side mirror cracked. Photos taken in parking garage."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-007",
+      "scenario": "rework_then_approve",
+      "expectedPath": "extract → investigate → review → rework(investigator) → investigate → review → approve",
+      "policyId": "POL-003",
+      "policyholder": "Carol Davis",
+      "vehicleType": "suv",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-12, insured vehicle flooded during heavy rain. Water level reached dashboard. Vehicle was parked in underground garage. Building management report #BM-2026-77. Comprehensive coverage."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Engine rebuild $12,000, transmission $6,500, electrical system $4,200, interior $3,800, upholstery $2,500. Total: $29,000. Total loss assessment recommended."
+        },
+        {
+          "type": "photo_description",
+          "content": "Five photos: (1) vehicle submerged to dashboard level, (2) water line marks on seats, (3) engine bay with standing water, (4) dashboard electronics visible through water, (5) exterior showing flood debris."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-008",
+      "scenario": "rework_then_approve",
+      "expectedPath": "extract → investigate → review → rework(extractor) → extract → investigate → review → approve",
+      "policyId": "POL-008",
+      "policyholder": "Henry Taylor",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-13, insured 2021 Honda Accord hit a pothole causing tire blowout and rim damage. Vehicle then struck a guardrail. Single vehicle accident. Report #SA-2026-89."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Front right tire $220, rim $450, fender liner $180, bumper corner $600, paint $280. Total: $1,730. 2 business days."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-009",
+      "scenario": "rework_then_approve",
+      "expectedPath": "extract → investigate → review → rework(investigator) → investigate → review → approve",
+      "policyId": "POL-005",
+      "policyholder": "Eve Martinez",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-14, insured vehicle broken into at shopping mall parking lot. Items stolen from trunk: laptop bag ($2,000), suitcase ($500). Window smashed. Police report #BF-2026-445."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Rear window replacement $380, trunk lock mechanism $150, weatherstripping $90. Total: $620. 1 business day. Note: stolen items valued at $2,500 separate claim."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-010",
+      "scenario": "rework_then_approve",
+      "expectedPath": "extract → investigate → review → rework(extractor) → extract → investigate → review → approve",
+      "policyId": "POL-006",
+      "policyholder": "Frank Brown",
+      "vehicleType": "suv",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-15, insured 2022 Toyota Highlander backed into a bollard in a parking garage. Rear bumper and tailgate damaged. No witnesses. Garage camera may have footage. Report #PG-2026-112."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Rear bumper $2,800, tailgate $4,500, rear camera $420, parking sensors $350, paint $1,100. Total: $9,170. 12 business days."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-011",
+      "scenario": "rework_then_reject",
+      "expectedPath": "extract → investigate → review → rework(extractor) → extract → investigate → review → reject",
+      "policyId": "POL-002",
+      "policyholder": "Bob Smith",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-16, insured vehicle collision at intersection. Damage described as 'severe front end damage, car may be totaled'. Other driver at fault. Police report pending. Report #IC-2026-301."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Front bumper $3,500, hood $4,200, radiator $1,800, AC condenser $900, frame straightening $5,000, headlights $1,600. Total: $17,000. Note: Vehicle value estimated at $12,000. Total loss likely."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-012",
+      "scenario": "rework_then_reject",
+      "expectedPath": "extract → investigate → review → rework(investigator) → investigate → review → reject",
+      "policyId": "POL-004",
+      "policyholder": "Dan Wilson",
+      "vehicleType": "truck",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-17, insured 2020 Ford F-150 collided with a deer. Significant front-end damage. headlights broken, radiator leaking. Report #WD-2026-66."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Front bumper $2,200, grille $1,100, headlights $1,400, radiator $1,500, hood $3,200, paint $1,800. Total: $11,200."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-013",
+      "scenario": "rework_then_reject",
+      "expectedPath": "extract → investigate → review → rework(extractor) → extract → investigate → review → reject",
+      "policyId": "POL-007",
+      "policyholder": "Grace Lee",
+      "vehicleType": "motorcycle",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-18, insured motorcycle dropped in driveway. Minor scrape on right side. No other vehicles involved. Self-reported. Report #MC-2026-12."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Right fairing $800, exhaust heat shield $200, mirror $150, paint $400. Total: $1,550."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-014",
+      "scenario": "rework_then_reject",
+      "expectedPath": "extract → investigate → review → rework(investigator) → investigate → review → reject",
+      "policyId": "POL-002",
+      "policyholder": "Bob Smith",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-19, insured vehicle damage in parking lot. Claimant says 'someone scratched my car but I didn't see who did it'. No witnesses, no camera footage. Report #PL-2026-501."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Paint correction and buffing $800, clear coat $300. Total: $1,100."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-015",
+      "scenario": "rework_then_reject",
+      "expectedPath": "extract → investigate → review → rework(extractor) → extract → investigate → review → reject",
+      "policyId": "POL-007",
+      "policyholder": "Grace Lee",
+      "vehicleType": "motorcycle",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-20, insured motorcycle collision with car at intersection. Rider claims car ran stop sign. Minor injuries (road rash). Hospital visit. Report #MC-2026-15."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Front forks $2,400, front wheel $800, handlebars $350, fairings $1,200, mirrors $200. Total: $4,950. Medical expenses separate claim."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-016",
+      "scenario": "budget_exceeded",
+      "expectedPath": "extract → investigate → review → (multiple reworks) → budget_exceeded",
+      "policyId": "POL-003",
+      "policyholder": "Carol Davis",
+      "vehicleType": "suv",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-21, insured 2023 Honda CR-V involved in multi-vehicle pileup on highway. Extensive damage from front and rear. 4 other vehicles involved. Highway patrol report #HP-2026-889. Complex multi-party claim requiring detailed analysis of each impact point and liability distribution."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Comprehensive damage assessment: Front bumper $4,200, hood $5,800, radiator support $2,100, AC system $3,400, headlights $2,800, fender $3,200, door $4,500, quarter panel $6,200, rear bumper $3,800, trunk $4,100, paint full body $8,500, frame $7,200, suspension $5,600. Total: $61,400. Multiple repair phases recommended."
+        },
+        {
+          "type": "photo_description",
+          "content": "Eight photos documenting: (1) full front damage, (2) hood and radiator close-up, (3) left side damage, (4) right side damage, (5) rear damage, (6) frame alignment marks, (7) interior dashboard warning lights, (8) overall vehicle stance showing misalignment."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-017",
+      "scenario": "budget_exceeded",
+      "expectedPath": "extract → investigate → review → (multiple reworks) → budget_exceeded",
+      "policyId": "POL-006",
+      "policyholder": "Frank Brown",
+      "vehicleType": "suv",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-22, insured 2023 Ford Explorer hit a retaining wall while parking. Extensive undercarriage damage not visible from exterior. Damage discovered during inspection. Report #PW-2026-77. Requires specialized undercarriage inspection and multiple subsystem evaluations."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Undercarriage inspection $1,500, exhaust system $4,200, driveshaft $3,800, transmission mount $2,100, fuel system $2,900, brake lines $1,800, suspension components $5,500, frame repair $8,200. Total: $30,000. Multiple specialist assessments required."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-018",
+      "scenario": "budget_exceeded",
+      "expectedPath": "extract → investigate → review → (multiple reworks) → budget_exceeded",
+      "policyId": "POL-008",
+      "policyholder": "Henry Taylor",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-23, insured 2021 Honda Accord flood damage from Hurricane Maria storm surge. Vehicle submerged in 3 feet of saltwater for 6 hours. Complete electrical system failure. Multiple subsystem failures suspected. Report #FS-2026-44. Saltwater corrosion requires extensive evaluation."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Complete electrical system $12,000, engine assessment $8,000, transmission $6,500, ECU replacement $3,200, body control module $2,800, instrument cluster $1,900, wiring harness $7,500, interior teardown and rebuild $8,000. Total: $49,900. Total loss evaluation recommended."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-019",
+      "scenario": "policy_violation",
+      "expectedPath": "extract → investigate → review → reject",
+      "policyId": "POL-004",
+      "policyholder": "Dan Wilson",
+      "vehicleType": "truck",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-24, insured 2020 Ford F-150 involved in collision while delivering commercial goods. Vehicle was being used for commercial delivery purposes at the time of loss. Report #CD-2026-31."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Front end $6,800, bed $4,200, tailgate $2,100, paint $3,500. Total: $16,600."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-020",
+      "scenario": "policy_violation",
+      "expectedPath": "extract → investigate → review → reject",
+      "policyId": "POL-002",
+      "policyholder": "Bob Smith",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-25, insured vehicle collision while driver was operating under the influence. Other driver also intoxicated. Both vehicles totaled. Police report #DUI-2026-19. Criminal charges pending."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Vehicle assessed as total loss. Estimated repair cost: $22,000. Vehicle value: $14,500."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-021",
+      "scenario": "policy_violation",
+      "expectedPath": "extract → investigate → review → reject",
+      "policyId": "POL-007",
+      "policyholder": "Grace Lee",
+      "vehicleType": "motorcycle",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-26, insured motorcycle crashed during unauthorized race on public road. Rider was racing another motorcycle. No other vehicles involved. Speed estimated at 90+ mph. Report #UR-2026-8."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Complete front end $5,200, engine damage $8,400, frame $6,100. Total: $19,700. Vehicle likely total loss."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-022",
+      "scenario": "edge_case_incomplete_docs",
+      "expectedPath": "extract → (incomplete data flagged) → review → reject",
+      "policyId": "POL-005",
+      "policyholder": "Eve Martinez",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "Vehicle was damaged in an incident. No further details provided by claimant."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-023",
+      "scenario": "edge_case_conflicting_estimates",
+      "expectedPath": "extract → investigate → review → rework → review → reject",
+      "policyId": "POL-001",
+      "policyholder": "Alice Johnson",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-28, insured vehicle minor fender bender in parking lot. Low speed impact. Report #PB-2026-201."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Shop A estimate: Bumper $1,500, paint $400. Total: $1,900."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Shop B estimate: Bumper $6,800, hood $4,200, fender $3,100, paint $2,500. Total: $16,600. Note: Shop B describes 'catastrophic structural damage' inconsistent with low-speed parking lot incident."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-024",
+      "scenario": "edge_case_missing_photos",
+      "expectedPath": "extract → (missing evidence flagged) → review → reject",
+      "policyId": "POL-008",
+      "policyholder": "Henry Taylor",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-29, insured vehicle damage from unknown cause. Claimant states 'my car was fine when I parked it and damaged when I came back'. No witnesses, no photos provided, no police report filed. Report #UC-2026-55."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Right side panels $4,200, mirror $350, paint $1,800. Total: $6,350."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-025",
+      "scenario": "edge_case_high_value",
+      "expectedPath": "extract → investigate → review → approve",
+      "policyId": "POL-003",
+      "policyholder": "Carol Davis",
+      "vehicleType": "suv",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-09-30, insured 2023 Honda CR-V minor parking lot incident. Other driver opened door into insured vehicle. Dent on rear quarter panel. Report #PD-2026-333."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Paintless dent repair $600, paint touch-up $200. Total: $800. Same-day service."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-026",
+      "scenario": "straightforward_approval",
+      "expectedPath": "extract → investigate → review → approve",
+      "policyId": "POL-001",
+      "policyholder": "Alice Johnson",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-10-01, insured vehicle hit a pothole causing flat tire and wheel damage. City road maintenance report filed. Report #PH-2026-101."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Tire replacement $220, wheel alignment $150, rim repair $300. Total: $670."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-027",
+      "scenario": "straightforward_approval",
+      "expectedPath": "extract → investigate → review → approve",
+      "policyId": "POL-006",
+      "policyholder": "Frank Brown",
+      "vehicleType": "suv",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-10-02, insured vehicle minor collision with shopping cart in parking lot. Hood and fender dented. No witnesses. Report #SC-2026-44."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Hood $2,200, fender $1,800, paint $900. Total: $4,900."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-028",
+      "scenario": "rework_then_approve",
+      "expectedPath": "extract → investigate → review → rework(extractor) → extract → investigate → review → approve",
+      "policyId": "POL-005",
+      "policyholder": "Eve Martinez",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-10-03, insured vehicle collision at roundabout. Damage to front left corner. Other driver merged without yielding. Report #RB-2026-15."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Front bumper $2,800, headlight $1,200, fender $2,100, paint $800. Total: $6,900."
+        },
+        {
+          "type": "photo_description",
+          "content": "Three photos showing front left damage, headlight crack, and paint transfer from other vehicle."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-029",
+      "scenario": "edge_case_incomplete_docs",
+      "expectedPath": "extract → (incomplete data flagged) → review → reject",
+      "policyId": "POL-002",
+      "policyholder": "Bob Smith",
+      "vehicleType": "sedan",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "Claimant reports vehicle was 'damaged somehow' but provides no details about when, where, or how the damage occurred. No date, no location, no description of incident."
+        }
+      ]
+    },
+    {
+      "claimId": "CLM-030",
+      "scenario": "straightforward_approval",
+      "expectedPath": "extract → investigate → review → approve",
+      "policyId": "POL-003",
+      "policyholder": "Carol Davis",
+      "vehicleType": "suv",
+      "documents": [
+        {
+          "type": "accident_report",
+          "content": "On 2026-10-05, insured vehicle damaged by falling branch during storm. Roof and windshield affected. Homeowner's insurance may also apply. Report #SB-2026-77."
+        },
+        {
+          "type": "repair_estimate",
+          "content": "Windshield $450, roof dent repair $1,200, paint $600. Total: $2,250."
+        },
+        {
+          "type": "photo_description",
+          "content": "Four photos: (1) tree branch on vehicle, (2) roof dent close-up, (3) windshield crack pattern, (4) overall vehicle showing branch size relative to damage."
+        }
+      ]
+    }
+  ]
+}

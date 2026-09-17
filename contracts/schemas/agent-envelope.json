@@ -1,0 +1,44 @@
+{
+  "$ref": "#/definitions/agent-envelope",
+  "definitions": {
+    "agent-envelope": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "type": "number",
+          "const": 1
+        },
+        "claimId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attemptId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inputVersion": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "callbackToken": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "claimId",
+        "runId",
+        "attemptId",
+        "inputVersion",
+        "callbackToken"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

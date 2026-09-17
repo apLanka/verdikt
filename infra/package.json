@@ -1,0 +1,26 @@
+{
+  "name": "verdikt",
+  "version": "0.1.0",
+  "description": "Multi-agent claims triage system — AWS-native reference architecture",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "cdk": "cdk",
+    "synth": "cdk synth",
+    "deploy": "cdk deploy --all",
+    "destroy": "cdk destroy --all",
+    "diff": "cdk diff",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.150.0",
+    "constructs": "^10.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "aws-cdk": "^2.150.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

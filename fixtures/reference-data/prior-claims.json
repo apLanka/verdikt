@@ -1,0 +1,58 @@
+[
+  {
+    "priorClaimId": "PC-001",
+    "policyId": "POL-001",
+    "date": "2024-03-15",
+    "settlementAmount": 8500,
+    "status": "settled",
+    "description": "Rear-end collision, minor bumper damage"
+  },
+  {
+    "priorClaimId": "PC-002",
+    "policyId": "POL-001",
+    "date": "2025-01-20",
+    "settlementAmount": 12000,
+    "status": "settled",
+    "description": "Side mirror replacement and door dent"
+  },
+  {
+    "priorClaimId": "PC-003",
+    "policyId": "POL-002",
+    "date": "2024-08-10",
+    "settlementAmount": 3500,
+    "status": "denied",
+    "description": "Claim exceeded liability limit"
+  },
+  {
+    "priorClaimId": "PC-004",
+    "policyId": "POL-003",
+    "date": "2025-06-01",
+    "settlementAmount": 22000,
+    "status": "settled",
+    "description": "Hail damage to roof and hood"
+  },
+  {
+    "priorClaimId": "PC-005",
+    "policyId": "POL-005",
+    "date": "2024-11-05",
+    "settlementAmount": 5000,
+    "status": "settled",
+    "description": "Parking lot scratch and dent"
+  },
+  {
+    "priorClaimId": "PC-006",
+    "policyId": "POL-006",
+    "date": "2025-02-14",
+    "settlementAmount": 18000,
+    "status": "pending",
+    "description": "Front-end collision, airbag deployment"
+  },
+  {
+    "priorClaimId": "PC-007",
+    "policyId": "POL-008",
+    "date": "2024-07-22",
+    "settlementAmount": 6500,
+    "status": "settled",
+    "description": "Windshield crack from road debris"
+  }
+]

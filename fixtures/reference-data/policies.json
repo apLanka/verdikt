@@ -1,0 +1,66 @@
+[
+  {
+    "policyId": "POL-001",
+    "coverageType": "comprehensive",
+    "limitAmount": 50000,
+    "status": "active",
+    "vehicleType": "sedan",
+    "policyholder": "Alice Johnson"
+  },
+  {
+    "policyId": "POL-002",
+    "coverageType": "liability_only",
+    "limitAmount": 15000,
+    "status": "active",
+    "vehicleType": "sedan",
+    "policyholder": "Bob Smith"
+  },
+  {
+    "policyId": "POL-003",
+    "coverageType": "comprehensive",
+    "limitAmount": 75000,
+    "status": "active",
+    "vehicleType": "suv",
+    "policyholder": "Carol Davis"
+  },
+  {
+    "policyId": "POL-004",
+    "coverageType": "comprehensive",
+    "limitAmount": 40000,
+    "status": "lapsed",
+    "vehicleType": "truck",
+    "policyholder": "Dan Wilson"
+  },
+  {
+    "policyId": "POL-005",
+    "coverageType": "collision",
+    "limitAmount": 30000,
+    "status": "active",
+    "vehicleType": "sedan",
+    "policyholder": "Eve Martinez"
+  },
+  {
+    "policyId": "POL-006",
+    "coverageType": "comprehensive",
+    "limitAmount": 60000,
+    "status": "active",
+    "vehicleType": "suv",
+    "policyholder": "Frank Brown"
+  },
+  {
+    "policyId": "POL-007",
+    "coverageType": "liability_only",
+    "limitAmount": 10000,
+    "status": "cancelled",
+    "vehicleType": "motorcycle",
+    "policyholder": "Grace Lee"
+  },
+  {
+    "policyId": "POL-008",
+    "coverageType": "comprehensive",
+    "limitAmount": 55000,
+    "status": "active",
+    "vehicleType": "sedan",
+    "policyholder": "Henry Taylor"
+  }
+]

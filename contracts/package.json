@@ -1,0 +1,30 @@
+{
+  "name": "@verdikt/contracts",
+  "version": "0.1.0",
+  "description": "Shared Zod schemas and JSON Schemas for Verdikt agent envelopes, results, and state",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "generate:schemas": "node --loader ts-node/esm scripts/generate-schemas.ts",
+    "validate": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "zod": "^3.23.0",
+    "zod-to-json-schema": "^3.25.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

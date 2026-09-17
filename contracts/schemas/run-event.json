@@ -1,0 +1,51 @@
+{
+  "$ref": "#/definitions/run-event",
+  "definitions": {
+    "run-event": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claimId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stateTransition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fromState": {
+          "type": "string"
+        },
+        "toState": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {}
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "eventId",
+        "runId",
+        "claimId",
+        "stateTransition",
+        "toState",
+        "timestamp"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
