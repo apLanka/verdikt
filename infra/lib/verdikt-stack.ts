@@ -7,6 +7,9 @@ import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as apigw from "aws-cdk-lib/aws-apigateway";
 import * as iam from "aws-cdk-lib/aws-iam";
 import * as logs from "aws-cdk-lib/aws-logs";
+import * as sns from "aws-cdk-lib/aws-sns";
+import * as cw from "aws-cdk-lib/aws-cloudwatch";
+import * as cw_actions from "aws-cdk-lib/aws-cloudwatch-actions";
 import * as path from "node:path";
 import { Construct } from "constructs";
 
@@ -695,5 +698,134 @@ export class VerdiktStack extends cdk.Stack {
     new cdk.CfnOutput(this, "ApprovalApiUrl", {
       value: api.url,
     });
+
+    // ── Observability: SNS + CloudWatch Dashboard + Alarms ──────────
+
+    const alarmTopic = new sns.Topic(this, "AlarmTopic", {
+      topicName: "verdikt-alarms",
+    });
+
+    new cdk.CfnOutput(this, "AlarmTopicArn", {
+      value: alarmTopic.topicArn,
+    });
+
+    // CloudWatch Dashboard
+    const dashboard = new cw.Dashboard(this, "VerdiktDashboard", {
+      dashboardName: "verdikt-operations",
+    });
+
+    // Custom metric namespace
+    const ns = "Verdikt";
+
+    // Cost-per-claim metric (emitted by agent Lambdas)
+    const costPerClaim = new cw.Metric({
+      namespace: ns,
+      metricName: "CostPerClaim",
+      statistic: "Sum",
+      period: cdk.Duration.minutes(5),
+    });
+
+    // Attempt count metric
+    const attemptCount = new cw.Metric({
+      namespace: ns,
+      metricName: "AttemptCount",
+      statistic: "Average",
+      period: cdk.Duration.minutes(5),
+    });
+
+    // Rework rate metric
+    const reworkCount = new cw.Metric({
+      namespace: ns,
+      metricName: "ReworkCount",
+      statistic: "Sum",
+      period: cdk.Duration.minutes(5),
+    });
+
+    const totalRuns = new cw.Metric({
+      namespace: ns,
+      metricName: "TotalRuns",
+      statistic: "Sum",
+      period: cdk.Duration.minutes(5),
+    });
+
+    // Error count metric
+    const errorCount = new cw.Metric({
+      namespace: ns,
+      metricName: "ErrorCount",
+      statistic: "Sum",
+      period: cdk.Duration.minutes(5),
+    });
+
+    // Dashboard widgets
+    dashboard.addWidgets(
+      new cw.GraphWidget({
+        title: "Cost per Claim (USD)",
+        left: [costPerClaim],
+        width: 12,
+      }),
+      new cw.GraphWidget({
+        title: "Average Attempt Count",
+        left: [attemptCount],
+        width: 12,
+      })
+    );
+
+    dashboard.addWidgets(
+      new cw.GraphWidget({
+        title: "Rework Rate (runs with rework / total runs)",
+        left: [
+          new cw.MathExpression({
+            expression: "m1 / (m2 + 1)",
+            label: "Rework Rate",
+            usingMetrics: { m1: reworkCount, m2: totalRuns },
+          }),
+        ],
+        width: 12,
+      }),
+      new cw.GraphWidget({
+        title: "Error Rate (errors / total runs)",
+        left: [
+          new cw.MathExpression({
+            expression: "m1 / (m2 + 1)",
+            label: "Error Rate",
+            usingMetrics: { m1: errorCount, m2: totalRuns },
+          }),
+        ],
+        width: 12,
+      })
+    );
+
+    // CloudWatch Alarms
+    const budgetBreachAlarm = new cw.Alarm(this, "BudgetBreachAlarm", {
+      metric: costPerClaim,
+      threshold: 2.0,
+      evaluationPeriods: 1,
+      alarmDescription: "Cost per claim exceeded $2.00 ceiling",
+    });
+    budgetBreachAlarm.addAlarmAction(
+      new cw_actions.SnsAction(alarmTopic)
+    );
+
+    const errorRateAlarm = new cw.Alarm(this, "ErrorRateAlarm", {
+      metric: new cw.MathExpression({
+        expression: "m1 / (m2 + 1)",
+        usingMetrics: { m1: errorCount, m2: totalRuns },
+      }),
+      threshold: 0.05,
+      evaluationPeriods: 3,
+      alarmDescription: "Error rate exceeded 5%",
+    });
+    errorRateAlarm.addAlarmAction(
+      new cw_actions.SnsAction(alarmTopic)
+    );
+
+    // ── Grant agents CloudWatch metrics permissions ──────────────────
+
+    agentRole.addToPolicy(
+      new iam.PolicyStatement({
+        actions: ["cloudwatch:PutMetricData"],
+        resources: ["*"],
+      })
+    );
   }
 }
