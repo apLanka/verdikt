@@ -1,0 +1,26 @@
+{
+  "name": "@verdikt/extractor",
+  "version": "0.1.0",
+  "description": "Extractor agent Lambda — pulls structured facts from claim documents",
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.1134.0",
+    "@aws-sdk/client-dynamodb": "^3.600.0",
+    "@aws-sdk/client-sfn": "^3.600.0",
+    "@aws-sdk/lib-dynamodb": "^3.600.0",
+    "@verdikt/budget": "file:../budget",
+    "@verdikt/contracts": "file:../../contracts"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.140",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}
